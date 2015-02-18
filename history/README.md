@@ -20,3 +20,9 @@ History
     - http://cvsweb.netbsd.org/bsdweb.cgi/src/sys/net/Attic/if_ieee80211.h?only_with_tag=MAIN
   - 18/09/2001 - NetBSD moved IEEE 802.11 MAC management functions from awi driver to net/if_ieee80211subr.c
     - https://github.com/jsonn/src/commit/208a21ce2058584c8830ee89b847e9c7bc10140b 
+  - 23/06/2003 - FreeBSD imported new net80211 layer based on if_ieee80211.h / net/if_ieee80211subr.c
+    - https://github.com/freebsd/freebsd/commit/505adc686a0029ab4aa4877118f251a1894a2603
+  - 30/08/2003 - NetBSD pulls in net80211 layer from FreeBSD
+    - https://github.com/jsonn/src/commit/843b3e0cf641239a209761af530d33d657743223
+  - 23/06/2004 - OpenBSD pulls in net80211 layer from NetBSD
+    - https://github.com/Mischi/openbsd-src/commit/36a464030ee8ae15735a19d3edd5bea6eb8b37d1 
