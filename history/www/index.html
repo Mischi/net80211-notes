@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<title></title>
+	<link href="bower_components/normalize.css/normalize.css" rel="stylesheet" type="text/css">
+	<link href="bower_components/c3/c3.min.css" rel="stylesheet" type="text/css">
+</head>
+<body>
+	<div id="chart"></div>
+
+	<script src="bower_components/jquery/dist/jquery.min.js"></script>
+	<script src="bower_components/lodash/lodash.min.js"></script>
+	<script src="bower_components/d3/d3.min.js"></script>
+	<script src="bower_components/c3/c3.min.js"></script>
+	<script>
+
+		$.getJSON('data.json', function (history) {
+			$(function () {
+				console.log(history[0].generic['net80211']);
+				var chart = c3.generate({
+					bindto: '#chart',
+					size: {
+						height: $(window).height() - 20
+					},
+					data: {
+						type: 'bar',
+						json: history[0].generic['net80211'],
+						keys: {
+							x: '0',
+							value: ['6', '5', '6', '7']
+						},
+						names: {
+							'5': 'OpenBSD-net80211 modified',
+							'6': 'OpenBSD-net80211 added',
+							'7': 'OpenBSD-net80211 deleted'
+						},
+						colors: {
+							'5': '#cddc39',
+							'6': '#8bc34a',
+							'7': '#4caf50'
+						},
+						groups: [
+							['5', '6', '7']
+						],
+						order: 'asc'
+					},
+					axis: {
+						x: {
+							type: 'timeseries',
+							tick: {
+								values: [
+									'1999-01-01', '1999-06-01',
+									'2000-01-01', '2000-06-01',
+									'2001-01-01', '2001-06-01',
+									'2002-01-01', '2002-06-01',
+									'2003-01-01', '2003-06-01',
+									'2004-01-01', '2004-06-01',
+									'2005-01-01', '2005-06-01',
+									'2006-01-01', '2006-06-01',
+									'2007-01-01', '2007-06-01',
+									'2008-01-01', '2008-06-01',
+									'2009-01-01', '2009-06-01',
+									'2010-01-01', '2010-06-01',
+									'2011-01-01', '2011-06-01',
+									'2012-01-01', '2012-06-01',
+									'2013-01-01', '2013-06-01',
+									'2014-01-01', '2014-06-01',
+									'2015-01-01', '2015-06-01',
+									'2016-01-01', '2016-06-01'
+								],
+								format: '%Y-%m-%d'
+							}
+						},
+						y: {
+							label: 'Lines'
+						}
+					},
+					bar: {
+						width: {
+							ratio: 1
+						}
+					},
+					/*tooltip: {
+						contents: function (d, defaultTitleFormat, defaultValueFormat, color) {
+							console.log(arguments);
+							return '<h1>Sample Tooltip</h1>';
+						}
+					},*/
+					legend: {
+						position: 'inset',
+						inset: {
+							anchor: 'top-right',
+							x: 10,
+							y: 100,
+						}
+					},
+					grid: {
+						x: {
+							show: true
+						}
+					},
+					zoom: {
+						enabled: true
+					},
+					subchart: {
+						show: true,
+					}
+				});
+			});
+		})
+
+	</script>
+</body>
+</html>
